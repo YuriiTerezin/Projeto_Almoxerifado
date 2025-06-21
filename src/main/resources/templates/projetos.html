@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Controle de Projetos</title>
+</head>
+<body>
+<h1>Projetos</h1>
+<form th:action="@{/projetos}" method="post" th:object="${projeto}">
+    <input type="text" th:field="*{nome}" placeholder="Nome do Projeto" required />
+    <select multiple th:field="*{materiais}">
+        <option th:each="m : ${materiais}" th:value="${m.id}" th:text="${m.descricao}"></option>
+    </select>
+    <button type="submit">Salvar</button>
+</form>
+<a href="/projetos/exportar">Exportar para PDF</a>
+<ul>
+    <li th:each="p : ${projetos}" th:text="${p.nome}">Projeto</li>
+</ul>
+</body>
+</html>
