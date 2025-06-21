@@ -1,6 +1,5 @@
 package com.almoxerifado.controller;
 
-import com.almoxerifado.model.Material;
 import com.almoxerifado.model.Projeto;
 import com.almoxerifado.service.MaterialService;
 import com.almoxerifado.service.ProjetoService;
