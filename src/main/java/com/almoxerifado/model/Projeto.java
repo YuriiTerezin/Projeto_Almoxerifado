@@ -11,6 +11,7 @@ public class Projeto {
     private Long id;
 
     private String nome;
+    private String ConsumoMaterial;
 
     @ManyToMany
     @JoinTable(
@@ -25,6 +26,9 @@ public class Projeto {
 
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
+
+    public String getConsumoMaterial() { return ConsumoMaterial; }
+    public void setConsumoMaterial(String ConsumoMaterial) { this.ConsumoMaterial = ConsumoMaterial; }
 
     public List<Material> getMateriais() { return materiais; }
     public void setMateriais(List<Material> materiais) { this.materiais = materiais; }

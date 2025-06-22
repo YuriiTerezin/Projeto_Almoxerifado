@@ -10,21 +10,21 @@ import java.util.List;
 public class MaterialService {
 
     @Autowired
-    private MaterialRepository repository;
+    private MaterialRepository materialRepository;
 
     public List<Material> listar() {
-        return repository.findAll();
+        return materialRepository.findAll();
     }
 
     public Material salvar(Material material) {
-        return repository.save(material);
+        return materialRepository.save(material);
     }
 
     public void deletar(Long id) {
-        repository.deleteById(id);
+        materialRepository.deleteById(id);
     }
 
     public Material buscarPorId(Long id) {
-        return repository.findById(id).orElse(null);
+        return materialRepository.findById(id).orElse(null);
     }
 }
