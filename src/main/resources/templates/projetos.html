@@ -1,21 +1,48 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Controle de Projetos</title>
+    <title>Projetos - Almoxarifado</title>
+    <link rel="stylesheet" th:href="@{/css/projetos.css}" href="/css/projetos.css">
 </head>
 <body>
-<h1>Projetos</h1>
-<form th:action="@{/projetos}" method="post" th:object="${projeto}">
-    <input type="text" th:field="*{nome}" placeholder="Nome do Projeto" required />
-    <select multiple th:field="*{materiais}">
-        <option th:each="m : ${materiais}" th:value="${m.id}" th:text="${m.descricao}"></option>
-    </select>
-    <button type="submit">Salvar</button>
-</form>
-<a href="/projetos/exportar">Exportar para PDF</a>
-<ul>
-    <li th:each="p : ${projetos}" th:text="${p.nome}">Projeto</li>
-</ul>
+    <div class="container">
+        <h1>Projetos Cadastrados</h1>
+        <div class="projetos-lista">
+            <div class="projeto-card" th:each="projeto : ${projetos}">
+                <h2 th:text="${projeto.nome}">Nome do Projeto</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Material</th>
+                            <th>Quantidade Total</th>
+                            <th>Valor Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="mat : ${projeto.materiais}">
+                            <td th:text="${mat.descricao}">Material</td>
+                            <td th:text="${mat.quantidade}">0</td>
+                            <td th:text="${#numbers.formatDecimal(mat.precoUnitario * mat.quantidade, 1, 'COMMA', 2, 'POINT')}">0,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="totais">
+                    <span><b>Total de Materiais:</b> <span th:text="${#lists.size(projeto.materiais)}">0</span></span>
+                    <span><b>Valor Total:</b> 
+                        <span th:text="${
+                            #numbers.formatDecimal(
+                                projeto.materiais
+                                    .stream()
+                                    .mapToDouble(m -> m.precoUnitario != null ? m.precoUnitario.doubleValue() * m.quantidade : 0)
+                                    .sum(),
+                                1, 'COMMA', 2, 'POINT')
+                        }">0,00</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <button class="voltar-btn" onclick="window.location.href='/'">Voltar para Início</button>
+    </div>
 </body>
 </html>
