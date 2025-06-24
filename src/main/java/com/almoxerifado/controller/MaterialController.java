@@ -1,6 +1,5 @@
 package com.almoxerifado.controller;
 
-// Update the import below to the correct package for Material
 import com.almoxerifado.model.Material;
 import com.almoxerifado.service.MaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +11,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/materiais")
 public class MaterialController {
 
+    private final MaterialService service;
+
     @Autowired
-    private MaterialService service;
+    public MaterialController(MaterialService service) {
+        this.service = service;
+    }
 
     @GetMapping
     public String listarMateriais(Model model) {
@@ -23,14 +26,8 @@ public class MaterialController {
     }
 
     @PostMapping
-    public String adicionarMaterial(@ModelAttribute Material material) {
+    public String adicionarMaterial(@ModelAttribute("material") Material material) {
         service.salvar(material);
-        return "redirect:/materiais";
-    }
-
-    @GetMapping("/remover/{id}")
-    public String removerMaterial(@PathVariable Long id) {
-        service.deletar(id);
         return "redirect:/materiais";
     }
 
@@ -40,5 +37,11 @@ public class MaterialController {
         model.addAttribute("material", material);
         model.addAttribute("materiais", service.listar());
         return "materiais";
+    }
+
+    @GetMapping("/remover/{id}")
+    public String removerMaterial(@PathVariable Long id) {
+        service.deletar(id);
+        return "redirect:/materiais";
     }
 }
