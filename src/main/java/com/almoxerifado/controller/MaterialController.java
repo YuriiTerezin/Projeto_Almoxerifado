@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/materiais")
 public class MaterialController {
 
+    private static final String VIEW_MATERIAIS = "materiais";
+
     private final MaterialService service;
 
     @Autowired
@@ -22,7 +24,7 @@ public class MaterialController {
     public String listarMateriais(Model model) {
         model.addAttribute("materiais", service.listar());
         model.addAttribute("material", new Material());
-        return "materiais";
+        return VIEW_MATERIAIS;
     }
 
     @PostMapping
@@ -36,10 +38,10 @@ public class MaterialController {
         Material material = service.buscarPorId(id);
         model.addAttribute("material", material);
         model.addAttribute("materiais", service.listar());
-        return "materiais";
+        return VIEW_MATERIAIS;
     }
 
-    @GetMapping("/remover/{id}")
+    @PostMapping("/remover/{id}")
     public String removerMaterial(@PathVariable Long id) {
         service.deletar(id);
         return "redirect:/materiais";
