@@ -19,4 +19,8 @@ public class ProjetoService {
     public Projeto salvar(Projeto projeto) {
         return repository.save(projeto);
     }
+
+    public void deletar(Long id) {
+        repository.deleteById(id);
+    }
 }

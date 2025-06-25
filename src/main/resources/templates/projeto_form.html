@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo Projeto</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Novo Projeto</h1>
+        <div th:if="${erro}" style="color:#e74c3c; font-weight:bold; margin-bottom:16px;">[[${erro}]]</div>
+        <form th:action="@{/projetos/salvar}" method="post" th:object="${projeto}">
+            <div>
+                <label for="nome">Nome do Projeto:</label>
+                <input type="text" id="nome" th:field="*{nome}" required>
+            </div>
+            <div>
+                <label>Materiais:</label>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Selecionar</th>
+                            <th>Descrição</th>
+                            <th>Categoria</th>
+                            <th>Preço Unitário</th>
+                            <th>Quantidade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="mat : ${materiais}">
+                            <td>
+                                <input type="checkbox" name="materiaisSelecionados" th:value="${mat.id}">
+                            </td>
+                            <td th:text="${mat.descricao}"></td>
+                            <td th:text="${mat.categoria}"></td>
+                            <td th:text="${#numbers.formatDecimal(mat.precoUnitario, 1, 'COMMA', 2, 'POINT')}"></td>
+                            <td>
+                                <input type="number" min="1" name="quantidade__${mat.id}" th:name="'quantidade_' + ${mat.id}" value="1" style="width:60px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="botoes-inferior">
+                <button type="submit" class="voltar-btn">Salvar Projeto</button>
+                <button type="button" onclick="window.location.href='/projetos'" class="voltar-btn">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

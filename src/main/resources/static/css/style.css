@@ -174,37 +174,47 @@ table tbody tr:hover {
 /* ======= PROJETOS (cards) ======= */
 .projetos-lista {
     display: flex;
-    flex-direction: column;
-    gap: 32px;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 32px;
 }
 .projeto-card {
-    background: #e9ecef;
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 24px 32px;
+    min-width: 320px;
+    max-width: 420px;
+    margin-bottom: 24px;
 }
 .projeto-card h2 {
     margin-top: 0;
+    margin-bottom: 18px;
+    color: #2980b9;
+    font-size: 1.3rem;
+    text-align: left;
 }
 .projeto-card table {
     width: 100%;
+    margin-bottom: 12px;
     border-collapse: collapse;
-    margin-top: 16px;
 }
 .projeto-card th, .projeto-card td {
-    border: 1px solid #ccc;
-    padding: 8px 12px;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 6px 8px;
     text-align: left;
 }
 .projeto-card th {
-    background: #dee2e6;
+    background: #eaf6fb;
+    color: #2980b9;
 }
-.totais {
-    margin-top: 16px;
+.projeto-card .totais {
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
     font-weight: bold;
-    gap: 24px;
+    color: #2c3e50;
 }
 
 /* ======= BADGE ======= */
