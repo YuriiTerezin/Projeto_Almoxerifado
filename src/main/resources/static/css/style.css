@@ -102,8 +102,10 @@ form button:hover,
 }
 
 .botoes-inferior {
-    margin-top: 20px;
-    text-align: right;
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    gap: 16px;
 }
 
 .table-title {
@@ -195,6 +197,22 @@ a:hover {
     display: flex;
     justify-content: center;
     gap: 5px;
+}
+
+.voltar-btn {
+    margin: 24px auto 0 auto;
+    display: block;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 8px;
+    background: #007bff;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.voltar-btn:hover {
+    background: #0056b3;
 }
 
 /* RESPONSIVIDADE */
