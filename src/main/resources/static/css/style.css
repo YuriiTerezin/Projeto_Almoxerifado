@@ -1,3 +1,4 @@
+/* ======= GERAL ======= */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -5,6 +6,7 @@ body {
     background: #f7f7f7;
 }
 
+/* ======= HEADER ======= */
 .header-bar {
     background: #3498db;
     color: #fff;
@@ -17,20 +19,28 @@ body {
     box-shadow: 0 2px 8px rgba(0,0,0,0.07);
 }
 
+/* ======= CONTAINER ======= */
 .container {
     max-width: 900px;
-    margin: 30px auto;
+    margin: 40px auto;
     background: #fff;
-    padding: 30px 40px;
-    border-radius: 10px;
+    padding: 32px 40px;
+    border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.07);
 }
 
+/* ======= TÍTULOS ======= */
 h1, h2 {
     color: #2c3e50;
     margin-bottom: 20px;
+    text-align: center;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 32px;
 }
 
+/* ======= FORMULÁRIOS ======= */
 .form-title {
     display: flex;
     align-items: center;
@@ -41,7 +51,6 @@ h1, h2 {
     color: #3498db;
     font-size: 2rem;
 }
-
 form {
     margin-bottom: 30px;
     background: #f9f9f9;
@@ -49,13 +58,11 @@ form {
     border-radius: 8px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.04);
 }
-
 form label {
     display: block;
     margin-top: 10px;
     font-weight: bold;
 }
-
 form input[type="text"],
 form input[type="number"] {
     width: 100%;
@@ -66,6 +73,7 @@ form input[type="number"] {
     box-sizing: border-box;
 }
 
+/* ======= BOTÕES ======= */
 form button,
 .botoes-topo button,
 .botoes-inferior button {
@@ -82,7 +90,6 @@ form button,
     align-items: center;
     gap: 5px;
 }
-
 .botoes-inferior button {
     background: linear-gradient(90deg, #27ae60 60%, #2ecc71 100%);
     box-shadow: 0 2px 8px rgba(39,174,96,0.15);
@@ -90,17 +97,17 @@ form button,
 .botoes-inferior button:hover {
     background: linear-gradient(90deg, #219150 60%, #27ae60 100%);
 }
-
 form button:hover,
 .botoes-topo button:hover {
     background: #217dbb;
 }
-
 .botoes-topo {
     margin-bottom: 20px;
     text-align: right;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
 }
-
 .botoes-inferior {
     display: flex;
     justify-content: center;
@@ -108,6 +115,27 @@ form button:hover,
     gap: 16px;
 }
 
+/* ======= VOLTAR BTN (usado em projetos e materiais) ======= */
+.voltar-btn {
+    margin: 32px auto 0 auto;
+    display: block;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 8px;
+    background: #007bff;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-weight: bold;
+    align-items: center;
+    gap: 8px;
+}
+.voltar-btn:hover {
+    background: #0056b3;
+}
+
+/* ======= TABELAS ======= */
 .table-title {
     display: flex;
     align-items: center;
@@ -119,7 +147,6 @@ form button:hover,
     color: #2c3e50;
     font-size: 1.5rem;
 }
-
 table {
     width: 100%;
     border-collapse: collapse;
@@ -127,38 +154,79 @@ table {
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     margin-top: 20px;
 }
-
 th, td {
     padding: 10px 14px;
     border: 1px solid #ccc;
     text-align: center;
 }
-
 th {
     background: #3498db;
     color: #fff;
 }
-
 tr:nth-child(even) {
     background: #f2f2f2;
 }
-
-/* Efeito de hover na linha da tabela */
 table tbody tr:hover {
     background: #eaf6fb;
     transition: background 0.2s;
 }
 
+/* ======= PROJETOS (cards) ======= */
+.projetos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+.projeto-card {
+    background: #e9ecef;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.projeto-card h2 {
+    margin-top: 0;
+}
+.projeto-card table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+.projeto-card th, .projeto-card td {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    text-align: left;
+}
+.projeto-card th {
+    background: #dee2e6;
+}
+.totais {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    gap: 24px;
+}
+
+/* ======= BADGE ======= */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: #e1ecf4;
+    color: #3498db;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+/* ======= AÇÕES ======= */
 a {
     color: #3498db;
     text-decoration: none;
     margin-right: 10px;
 }
-
 a:hover {
     text-decoration: underline;
 }
-
 .action-btn {
     border: none;
     background: none;
@@ -182,40 +250,13 @@ a:hover {
     color: #c0392b;
     transform: scale(1.2);
 }
-
-.badge {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 12px;
-    background: #e1ecf4;
-    color: #3498db;
-    font-size: 0.9em;
-    font-weight: bold;
-}
-
 .table-actions {
     display: flex;
     justify-content: center;
     gap: 5px;
 }
 
-.voltar-btn {
-    margin: 24px auto 0 auto;
-    display: block;
-    padding: 12px 32px;
-    border: none;
-    border-radius: 8px;
-    background: #007bff;
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-.voltar-btn:hover {
-    background: #0056b3;
-}
-
-/* RESPONSIVIDADE */
+/* ======= RESPONSIVIDADE ======= */
 @media (max-width: 700px) {
     .container {
         padding: 10px 5px;
@@ -262,5 +303,15 @@ a:hover {
     }
     .table-actions {
         justify-content: flex-start;
+    }
+    .totais {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .projeto-card {
+        padding: 10px;
+    }
+    .projeto-card table, .projeto-card th, .projeto-card td {
+        font-size: 0.95rem;
     }
 }
